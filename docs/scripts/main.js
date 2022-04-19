@@ -22,7 +22,6 @@ let currentConversationId = '';
 let translationData = null;
 let genesysCloudLanguage = 'en-us';
 let messageType = '';
-// let lastMessageId = '';
 let messageIds = [];
 
 /**
@@ -215,14 +214,14 @@ function showChatTranscript(conversationId){
             });
         });
     } else if (messageType === 'message') {
-        return conversationsApi.getConversationsMessage(conversationId)
+        return conversationsApi.getConversation(conversationId)
         .then((data) => {
-            
-
             data.participants.forEach((participant) => {
                 if(participant.purpose === 'customer' || participant.purpose === 'agent') {
                     participant.messages.forEach((message) => {
-                        messageIds.push(message.messageId);
+                        message.messages.forEach((msg) => {
+                            messageIds.push(msg.messageId);
+                        })
                     })
                 }
             });
