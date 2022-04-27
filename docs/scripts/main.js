@@ -9,7 +9,6 @@ const client = platformClient.ApiClient.instance;
 
 // API instances
 const usersApi = new platformClient.UsersApi();
-const analyticsApi = new platformClient.AnalyticsApi();
 const conversationsApi = new platformClient.ConversationsApi();
 const responseManagementApi = new platformClient.ResponseManagementApi();
 
@@ -67,7 +66,6 @@ let onMessage = (data) => {
         let messageId = '';
         let purpose = '';
         let name = '';
-        let messageStatus = '';
 
         var messages = [];
         var participantPurposes = [];
@@ -81,7 +79,6 @@ let onMessage = (data) => {
             return;
         } else if (data.eventBody.participants.find(p => p.purpose == 'customer').endTime) {
             console.log('ending conversation');
-            // closeMessage();
         } else {
             data.eventBody.participants.forEach((participant) => {
                 if(!participant.endTime) {
