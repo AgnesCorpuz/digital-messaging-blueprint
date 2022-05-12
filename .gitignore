@@ -7,3 +7,8 @@ node_modules/*
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+sdk_debug.log
+
+node_modules/*
+package-lock.json
